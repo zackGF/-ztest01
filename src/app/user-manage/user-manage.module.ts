@@ -6,16 +6,17 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import {DemoNgZorroAntdModule} from "../ng-zorro-antd.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [UserListComponent, UserAddComponent, UserEditComponent],
-  imports: [
-    CommonModule,
-    UserManageRoutingModule,
-    DemoNgZorroAntdModule,
-    FormsModule,
-  ]
+    imports: [
+        CommonModule,
+        UserManageRoutingModule,
+        DemoNgZorroAntdModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ]
 })
 export class UserManageModule { }

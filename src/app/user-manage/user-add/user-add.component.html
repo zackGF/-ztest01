@@ -1,0 +1,22 @@
+<h2>新增用户</h2>
+<hr>
+<form nz-form #addUserForm="ngForm" (submit)="SaveUser()" class="flex-form">
+  <nz-form-item class="item">
+    <nz-form-control nzErrorTip="请输入用户名!">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input placeholder="Username" required/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item class="item">
+    <nz-form-control nzErrorTip="请输入密码!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input type="password" nz-input placeholder="Password" required/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button [disabled]="!addUserForm.form.valid" type="submit"
+          nz-button class="login-form-button login-form-margin item" [nzType]="'primary'">添加
+  </button>
+</form>

@@ -1,0 +1,33 @@
+<h2>用户列表</h2>
+<hr>
+<div class="btn-position">
+  <button nz-button nzType="primary" nzShape="round" (click)="gotoAddNewUser()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>添加用户
+  </button>
+</div>
+<nz-table #userTable [nzData]="users">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>用户名</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of userTable.data">
+    <td>{{data.id_}}</td>
+    <td>{{data.username}}</td>
+    <td>
+      <button nz-button nzType="primary" [nzSize]="size" nzShape="round" title="修改">
+        <i nz-icon nzType="edit" nzTheme="outline"></i>
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" [nzSize]="size" nzShape="round" title="删除！">
+        <i nz-icon nzType="delete" nzTheme="outline"></i>
+      </button>
+
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+

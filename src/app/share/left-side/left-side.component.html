@@ -1,0 +1,13 @@
+<nz-sider>
+  <div class="logo">
+    <img style="width: 93px;" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+  </div>
+  <ul nz-menu nzTheme="dark" nzMode="inline">
+    <li nz-menu-item *ngFor="let item of all_tags">
+      <a [routerLink]="item.url_">
+        <i nz-icon [nzType]="item.icon_" nzTheme="outline"></i>
+        <span>{{item.title_}}</span>
+      </a>
+    </li>
+  </ul>
+</nz-sider>

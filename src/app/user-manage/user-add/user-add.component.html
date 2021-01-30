@@ -1,6 +1,9 @@
-<h2>新增用户</h2>
+<div class="flex-head">
+  <button nz-button nzType="link" (click)="gobBack()"><i nz-icon nzType="left"></i>返回</button>
+  <h2>新增用户</h2>
+</div>
 <hr>
-<form nz-form [formGroup]="validateForm" (submit)="SaveUser()" class="flex-form">
+<form nz-form [formGroup]="validateForm" (submit)="SaveUser()" class="flex-form item">
   <nz-form-item>
     <nz-form-control nzErrorTip="请输入用户名">
       <nz-input-group nzPrefixIcon="user">

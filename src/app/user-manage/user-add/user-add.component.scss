@@ -4,5 +4,13 @@
 .flex-form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
+}
+
+.flex-head{
+  display: flex;
+  flex-direction: row;
+  h2{
+    margin-left: 20px;
+  }
 }

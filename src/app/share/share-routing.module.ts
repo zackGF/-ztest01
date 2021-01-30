@@ -5,6 +5,7 @@ import {RoleListComponent} from "../role-manage/role-list/role-list.component";
 import {AccessListComponent} from "../access-manage/access-list/access-list.component";
 import {HomeComponent} from "../home-manage/home/home.component";
 import {UserAddComponent} from "../user-manage/user-add/user-add.component";
+import {UserEditComponent} from "../user-manage/user-edit/user-edit.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: []
   },
   {path: 'addNewUser', component: UserAddComponent},
+  {path: 'editUser/:id', component: UserEditComponent},
   {
     path: 'roleList',
     component: RoleListComponent,

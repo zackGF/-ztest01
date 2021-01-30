@@ -13,4 +13,8 @@ export class UserService {
   getUsers():Observable<User[]> {
     return of(USERS);
   }
+
+  getUser(id: number): Observable<User> {
+    return of(USERS.find(user => user.id_ === id));
+  }
 }

@@ -1,1 +1,27 @@
-<h2>修改用户</h2>
+<div class="flex-head">
+  <button nz-button nzType="link" (click)="goBack()"><i nz-icon nzType="left"></i>返回</button>
+  <h2>修改用户</h2>
+</div>
+<hr>
+<form nz-form [formGroup]="validateForm" (submit)="EditUser()" class="flex-form item">
+  当前用户编号 &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{user.id_}}
+  <nz-form-item>
+    <nz-form-control nzErrorTip="请输入用户名">
+      <nz-input-group nzPrefixIcon="user">
+        <input formControlName="userName" nz-input placeholder="Username" [(ngModel)]="user.username"/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="请输入密码">
+      <nz-input-group nzPrefixIcon="lock">
+        <input formControlName="password" nz-input type="password" placeholder="Password" [(ngModel)]="user.password"/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid">修改</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

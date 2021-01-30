@@ -18,7 +18,7 @@
     <td>{{data.id_}}</td>
     <td>{{data.username}}</td>
     <td>
-      <button nz-button nzType="primary" [nzSize]="size" nzShape="round" title="修改">
+      <button nz-button nzType="primary" [nzSize]="size" (click)="goDetails(data.id_)" nzShape="round" title="修改">
         <i nz-icon nzType="edit" nzTheme="outline"></i>
       </button>
       <nz-divider nzType="vertical"></nz-divider>

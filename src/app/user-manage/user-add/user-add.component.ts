@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-user-add',
@@ -23,7 +24,8 @@ export class UserAddComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+              private location: Location) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -31,5 +33,9 @@ export class UserAddComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
+  }
+
+  gobBack() {
+    this.location.back();
   }
 }

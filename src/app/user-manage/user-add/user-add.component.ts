@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
 
@@ -10,11 +10,14 @@ import {Location} from "@angular/common";
 export class UserAddComponent implements OnInit {
   validateForm: FormGroup;
 
-  username: string;
-  password: string;
+  userForm = {
+    username: '',
+    password: ''
+  }
+  passwordVisible: true;
 
   SaveUser() {
-    console.log('用户名: '+this.username+',密码: '+ this.password);
+    // console.log('用户名: ' + this.username + ',密码: ' + this.password);
   }
 
   submitForm(): void {
@@ -25,7 +28,8 @@ export class UserAddComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              private location: Location) {}
+              private location: Location) {
+  }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

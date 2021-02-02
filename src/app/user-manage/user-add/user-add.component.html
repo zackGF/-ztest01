@@ -3,8 +3,8 @@
   <h2>新增用户</h2>
 </div>
 <hr>
-<form nz-form [formGroup]="validateForm" (submit)="SaveUser()" class="flex-form item">
-  <nz-form-item>
+<form #form_add="ngForm" (submit)="SaveUser()" class="flex-form item">
+  <!--<nz-form-item>
     <nz-form-control nzErrorTip="请输入用户名">
       <nz-input-group nzPrefixIcon="user">
         <input formControlName="userName" nz-input placeholder="Username" [(ngModel)]="username"/>
@@ -22,5 +22,8 @@
     <nz-form-control>
       <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid">添加</button>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item>-->
+  <input type="text" nz-input placeholder="输入用户名" [(ngModel)]="userForm.username"/>
+  <br>
+  <input type="password" nz-input placeholder="输入密码" [(ngModel)]="userForm.password"/>
 </form>

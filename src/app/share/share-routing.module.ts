@@ -6,30 +6,36 @@ import {AccessListComponent} from "../access-manage/access-list/access-list.comp
 import {HomeComponent} from "../home-manage/home/home.component";
 import {UserAddComponent} from "../user-manage/user-add/user-add.component";
 import {UserEditComponent} from "../user-manage/user-edit/user-edit.component";
+import {LayoutComponent} from "./layout/layout.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
-    children: []
+    path: 'layout',
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'userList',
+        component: UserListComponent,
+      },
+      {path: 'addNewUser', component: UserAddComponent},
+      {path: 'editUser/:id', component: UserEditComponent},
+      {
+        path: 'roleList',
+        component: RoleListComponent,
+      },
+      {
+        path: 'accessList',
+        component: AccessListComponent,
+      },
+    ]
   },
-  {
-    path: 'userList',
-    component: UserListComponent,
-    children: []
-  },
-  {path: 'addNewUser', component: UserAddComponent},
-  {path: 'editUser/:id', component: UserEditComponent},
-  {
-    path: 'roleList',
-    component: RoleListComponent,
-    children: []
-  },
-  {
-    path: 'accessList',
-    component: AccessListComponent,
-    children: []
-  },
+
 ];
 
 @NgModule({

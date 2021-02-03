@@ -1,0 +1,19 @@
+<form #sign_form='ngForm' (submit)="sign()" class="form-flex">
+  <h2>管理员登录</h2>
+  <div>
+    <input required type="text" placeholder="用户名" name="username" [(ngModel)]="formData.username" #username='ngModel'>
+  </div>
+
+  <div *ngIf="username.invalid && (username.dirty|| username.touched)">
+    <div *ngIf="username.errors.required"><span>用户名不能为空</span></div>
+  </div>
+
+  <div>
+    <input required type="password" placeholder="密码" name="password" [(ngModel)]="formData.password" #password='ngModel'>
+  </div>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <div *ngIf="password.errors.required"><span>密码不能为空</span></div>
+  </div>
+  <button class="btn" type="submit" [disabled]="!sign_form.form.valid">登录</button>
+
+</form>

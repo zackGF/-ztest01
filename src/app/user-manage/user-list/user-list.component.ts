@@ -27,10 +27,10 @@ export class UserListComponent implements OnInit {
   }
 
   gotoAddNewUser() {
-    this.router.navigate(['/addNewUser'])
+    this.router.navigate(['/layout/addNewUser'])
   }
 
   goDetails(id: number) {
-    this.router.navigate(['/editUser',id])
+    this.router.navigate(['/layout/editUser',id])
   }
 }

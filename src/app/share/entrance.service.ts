@@ -24,7 +24,7 @@ export class EntranceService {
   getUserByToken(token: string):User {
     return USERS.find(user => {
       if (user.token_ === token) {
-        window.localStorage.setItem('user_info', JSON.stringify(user));
+        // window.localStorage.setItem('user_info', JSON.stringify(user));
         return user;
       }
     });

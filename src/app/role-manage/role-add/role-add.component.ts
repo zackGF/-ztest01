@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-role-add',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleAddComponent implements OnInit {
 
-  constructor() { }
+  roleForm = {
+    roleName: '',
+    roleNameZh: ''
+  };
+
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
   }
 
+  SaveRole() {
+    console.log(this.roleForm);
+  }
+
+  goBack() {
+    this.location.back()
+  }
 }

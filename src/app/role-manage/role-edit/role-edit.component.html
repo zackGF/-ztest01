@@ -1,1 +1,30 @@
-<h2>角色编辑</h2>
+<div class="flex-head">
+  <button nz-button nzType="link" (click)="goBack()"><i nz-icon nzType="left"></i>返回</button>
+  <h2>编辑角色</h2>
+</div>
+<hr>
+<form #add_form='ngForm' (ngSubmit)="EditRole()" class="flex-form">
+  <div class="flex-group">
+    <label>
+      <input class="item" #roleName='ngModel' type="text" required [(ngModel)]="roleForm.roleName" placeholder="输入角色标识"
+             name="username" nz-input onkeyup="this.value=this.value.toUpperCase()">
+    </label>
+    <div *ngIf="roleName.invalid && (roleName.dirty||roleName.touched)">
+      <div *ngIf="roleName.errors.required">
+        <span>角色标识不能为空</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <label>
+      <input class="item" type="text" required [(ngModel)]="roleForm.roleNameZh" #roleNameZh="ngModel"
+             placeholder="输入角色名称"
+             name="roleNameZh" nz-input onkeyup="this.value=this.value.toUpperCase()">
+    </label>
+    <div *ngIf="roleNameZh.invalid && (roleNameZh.dirty || roleNameZh.touched)">
+      <div *ngIf="roleNameZh.errors.required"><span>名称不能为空</span></div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!add_form.form.valid" class="item-btn">修改</button>
+</form>

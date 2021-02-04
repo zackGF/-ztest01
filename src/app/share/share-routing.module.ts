@@ -8,6 +8,10 @@ import {UserAddComponent} from "../user-manage/user-add/user-add.component";
 import {UserEditComponent} from "../user-manage/user-edit/user-edit.component";
 import {LayoutComponent} from "./layout/layout.component";
 import {AuthGuard} from "./auth.guard";
+import {RoleAddComponent} from "../role-manage/role-add/role-add.component";
+import {RoleEditComponent} from "../role-manage/role-edit/role-edit.component";
+import {AccessAddComponent} from "../access-manage/access-add/access-add.component";
+import {AccessEditComponent} from "../access-manage/access-edit/access-edit.component";
 
 const routes: Routes = [
   {
@@ -29,10 +33,14 @@ const routes: Routes = [
         path: 'roleList',
         component: RoleListComponent,
       },
+      {path: 'addNewRole',component: RoleAddComponent},
+      {path: 'editRole/:id', component: RoleEditComponent},
       {
         path: 'accessList',
         component: AccessListComponent,
       },
+      {path: 'addNewAccess',component: AccessAddComponent},
+      {path: 'editAccess/:id',component: AccessEditComponent}
     ]
   },
 

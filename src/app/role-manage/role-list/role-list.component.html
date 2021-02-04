@@ -1,1 +1,33 @@
 <h2>角色列表</h2>
+<hr>
+<div class="btn-position">
+  <button nz-button nzType="primary" nzShape="round" (click)="gotoAddNewRole()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>添加角色
+  </button>
+</div>
+<nz-table>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>角色标识</th>
+    <th>角色注释</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let role of roles">
+    <td>{{role.id_}}</td>
+    <td>{{role.role_name}}</td>
+    <td>{{role.role_name_zh}}</td>
+    <td>
+      <button nz-button nzType="primary" nzSize="small" (click)="goDetails(role.id_)" nzShape="round" title="修改">
+        <i nz-icon nzType="edit" nzTheme="outline"></i>
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="danger" nzSize="small" nzShape="round" title="删除！">
+        <i nz-icon nzType="delete" nzTheme="outline"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

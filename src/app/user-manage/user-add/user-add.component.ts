@@ -39,7 +39,7 @@ export class UserAddComponent implements OnInit {
     });
   }
 
-  gobBack() {
+  goBack() {
     this.location.back();
   }
 }

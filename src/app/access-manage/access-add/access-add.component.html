@@ -1,1 +1,30 @@
-<p>添加访问信息</p>
+<div class="flex-head">
+  <button nz-button nzType="link" (click)="goBack()"><i nz-icon nzType="left"></i>返回</button>
+  <h2>添加访问信息</h2>
+</div>
+<hr>
+<form #add_form='ngForm' (ngSubmit)="SaveAccess()" class="flex-form">
+  <div class="flex-group">
+    <label>
+      <input class="item" #accessName='ngModel' type="text" required [(ngModel)]="accessForm.accessName" placeholder="输入访问名称"
+             name="accessname" nz-input>
+    </label>
+    <div *ngIf="accessName.invalid && (accessName.dirty||accessName.touched)">
+      <div *ngIf="accessName.errors.required">
+        <span>访问名称不能为空</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <label>
+      <input class="item" type="text" required [(ngModel)]="accessForm.accessLink" #accessLink="ngModel"
+             placeholder="输入访问路径"
+             name="accesslink" nz-input>
+    </label>
+    <div *ngIf="accessLink.invalid && (accessLink.dirty || accessLink.touched)">
+      <div *ngIf="accessLink.errors.required"><span>访问路径不能为空</span></div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!add_form.form.valid" class="item-btn">添加</button>
+</form>

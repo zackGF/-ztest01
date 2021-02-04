@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-access-add',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./access-add.component.scss']
 })
 export class AccessAddComponent implements OnInit {
+  accessForm={
+    accessName:'',
+    accessLink:''
+  };
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
   }
 
+  goBack() {
+    this.location.back();
+  }
+
+  SaveAccess() {
+    console.log(this.accessForm);
+  }
 }

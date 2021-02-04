@@ -3,6 +3,8 @@ import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {RoleService} from "../role.service";
 import {Roles} from "../../share/moke/roles";
+import {AccessService} from "../../access-manage/access.service";
+import {Access} from "../../share/moke/access";
 
 @Component({
   selector: 'app-role-edit',
@@ -11,15 +13,18 @@ import {Roles} from "../../share/moke/roles";
 })
 export class RoleEditComponent implements OnInit {
   roleForm = {
-    id:'',
+    id: '',
     roleName: '',
     roleNameZh: ''
   };
+  accessList: Access[];
+  accessIds: number[] = [];
 
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private accessService: AccessService
   ) {
   }
 
@@ -28,7 +33,7 @@ export class RoleEditComponent implements OnInit {
   }
 
   EditRole() {
-
+    console.log(this.roleForm.roleNameZh + ',' + this.accessIds);
   }
 
   getRole() {
@@ -38,9 +43,27 @@ export class RoleEditComponent implements OnInit {
       this.roleForm.roleName = data.role_name;
       this.roleForm.roleNameZh = data.role_name_zh;
     });
+    this.getAccessList()
+  }
+
+  getAccessList() {
+    this.accessService.getAccessList().subscribe(data => {
+      this.accessList = data;
+    });
   }
 
   goBack() {
     this.location.back();
+  }
+
+  selCheckBox(checked: boolean, id: number) {
+    if (checked) {
+      this.accessIds.push(id);
+    } else {
+      let index = this.accessIds.indexOf(id);
+      if (index > -1) {
+        this.accessIds.splice(index, 1);
+      }
+    }
   }
 }

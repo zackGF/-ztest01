@@ -26,5 +26,13 @@
       <div *ngIf="roleNameZh.errors.required"><span>名称不能为空</span></div>
     </div>
   </div>
+
+  <div *ngFor="let access of accessList" class="flex-group">
+    <label>
+      <input type="checkbox" [value]="access.id_"
+             (click)="selCheckBox($event.target.checked,access.id_)">
+      {{access.name_}}
+    </label>
+  </div>
   <button type="submit" [disabled]="!add_form.form.valid" class="item-btn">修改</button>
 </form>

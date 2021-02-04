@@ -3,25 +3,37 @@
   <h2>修改用户</h2>
 </div>
 <hr>
-<form nz-form [formGroup]="validateForm" (submit)="EditUser()" class="flex-form item">
-  当前用户编号 &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{user.id_}}
-  <nz-form-item>
-    <nz-form-control nzErrorTip="请输入用户名">
-      <nz-input-group nzPrefixIcon="user">
-        <input formControlName="userName" nz-input placeholder="Username" [(ngModel)]="user.username"/>
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="请输入密码">
-      <nz-input-group nzPrefixIcon="lock">
-        <input formControlName="password" nz-input type="password" placeholder="Password" [(ngModel)]="user.password"/>
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control>
-      <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid">修改</button>
-    </nz-form-control>
-  </nz-form-item>
+<form #add_form='ngForm' (ngSubmit)="EditUser()" class="flex-form">
+  <div class="flex-group">
+    <label>
+      <input class="item" #user_name='ngModel' type="text" required [(ngModel)]="user.username" placeholder="输入用户名"
+             name="username" nz-input>
+    </label>
+    <div *ngIf="user_name.invalid && (user_name.dirty||user_name.touched)">
+      <div *ngIf="user_name.errors.required">
+        <span>用户名不能为空</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <label>
+      <input class="item" type="password" required [(ngModel)]="user.password" #password="ngModel" placeholder="输入密码"
+             minlength="6" maxlength="18" name="password" nz-input>
+    </label>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div *ngIf="password.errors.required"><span>密码不能为空</span></div>
+      <div *ngIf="password.errors.minlength"><span>密码长度不符合</span></div>
+    </div>
+  </div>
+
+  <div *ngFor="let role of roles" class="flex-group">
+
+    <label>
+      <input type="checkbox" [value]="role.id_" (click)="selCheckBox($event.target.checked,role.id_)">
+    {{role.role_name_zh}}
+    </label>
+
+  </div>
+  <button type="submit" [disabled]="!add_form.form.valid" class="item-btn">添加</button>
 </form>

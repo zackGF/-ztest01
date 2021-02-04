@@ -18,13 +18,23 @@
 
   <div class="flex-group">
     <label>
-      <input class="item" type="password" required [(ngModel)]="userForm.password" #password="ngModel" placeholder="输入密码"
-            minlength="6" maxlength="18" name="password" nz-input>
+      <input class="item" type="password" required [(ngModel)]="userForm.password" #password="ngModel"
+             placeholder="输入密码"
+             minlength="6" maxlength="18" name="password" nz-input>
     </label>
     <div *ngIf="password.invalid && (password.dirty || password.touched)">
       <div *ngIf="password.errors.required"><span>密码不能为空</span></div>
       <div *ngIf="password.errors.minlength"><span>密码长度不符合</span></div>
     </div>
+  </div>
+
+  <div *ngFor="let role of roles" class="flex-group">
+
+    <label>
+      <input type="checkbox" [value]="role.id_" (click)="selCheckBox($event.target.checked,role.id_)">
+      {{role.role_name_zh}}
+    </label>
+
   </div>
   <button type="submit" [disabled]="!add_form.form.valid" class="item-btn">添加</button>
 </form>
